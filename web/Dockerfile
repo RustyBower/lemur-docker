@@ -17,18 +17,15 @@ LABEL maintainer="Netflix Open Source Development <talent@netflix.com>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
-apt-get install -y software-properties-common && \
-add-apt-repository ppa:deadsnakes/ppa -y && \
-  apt-get update && \
   apt-get install -y curl git build-essential sudo \
-    python3.6 python3-pip python3.6-dev \
-    nodejs npm \
+    python3 python3-pip python3-dev \
+    nodejs npm node-gyp nodejs-dev \
     postgresql postgresql-contrib \
-    libpq-dev libssl-dev libffi-dev libsasl2-dev libldap2-dev && \
-  ln -sf /usr/bin/python3.6 /usr/local/bin/python3 && \
-  update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
-  update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
-  update-alternatives --install /usr/bin/node node /usr/bin/nodejs 1 && \
+    libpq-dev libssl1.0-dev libffi-dev libsasl2-dev libldap2-dev && \
+  #ln -sf /usr/bin/python3.6 /usr/local/bin/python3 && \
+  #update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
+  #update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
+  #update-alternatives --install /usr/bin/node node /usr/bin/nodejs 1 && \
   apt-get clean -y && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
